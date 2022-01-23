@@ -12,7 +12,7 @@ Technologies Used
 * Deployment - Heroku
 
 ERD
-![ERD](./images/capstone-erd2.png)
+![ERD](./images/capstone-erd.png)
 Initial wireframe for Index Page
 ![Wireframe-index-page](./images/index-page.png)
 Wireframe for Cart Show Page
