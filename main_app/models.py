@@ -9,6 +9,14 @@ class Product(models.Model):
     shortDescription = models.CharField(max_length=30)
     price = models.FloatField()
     image = models.CharField(max_length=200)
-    
+
     def __str__(self):
         return self.name
+
+class SubCart(models.Model):
+    quantity = models.IntegerField()
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+class Cart(models.Model):
+    subcart = models.ForeignKey(SubCart, on_delete=models.CASCADE)
+    pass

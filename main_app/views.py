@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Product, SubCart, Cart
 from django.http import HttpResponse
 # Create your views here.
 
@@ -17,10 +18,15 @@ from django.http import HttpResponse
 # ]
 
 def home(request):
-  return HttpResponse('<h1>Hello /ᐠ｡‸｡ᐟ\ﾉ</h1>')
+  return HttpResponse('<h1>Hello, Customer!</h1>')
 
 def about(request):
   return render(request, 'about.html')
 
 def products_index(request):
+    products = Product.objects.all()
     return render(request, 'products/index.html', {'products': products})
+
+def products_detail(request, product_id):
+  product = Product.objects.get(id=product_id)
+  return render(request, 'products/detail.html', {'product': product})

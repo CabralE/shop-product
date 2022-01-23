@@ -5,11 +5,15 @@
 
 {% for product in products %}
 <div class="card">
-    <div class="card-content">
-        <span class="card-title">{{ product.name }}</span>
-        <p>Long-Description: {{ product.longDescription }}</p>
-        <p>Shot-Description: {{ product.shortDescription }}</p>
-    </div>
+    <a href="{% url 'detail' product.id %}">
+        <div class="card-content">
+            <span class="card-title">{{ product.name }}</span>
+            <p>Long-Description: {{ product.longDescription }}</p>
+            <p>Shot-Description: {{ product.shortDescription }}</p>
+            <p>Price: $ {{ product.price }}0</p>
+            <p>Image: {{ product.image }}</p>
+        </div>
+    </a>
 </div>
 {% endfor %}
 

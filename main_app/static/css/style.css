@@ -1,6 +1,11 @@
 :root {
-  --main-color: hotpink;
+  --main-color: rgb(100, 59, 79);
   --pane-padding: 5px 42px;
+}
+
+.nav-wrapper {
+  background-color: red;
+  color: red;
 }
 
 body {
