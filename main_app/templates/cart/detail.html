@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Cart Details</h1>
+
+<div class="card">
+    <div class="card-content">
+        <span class="card-title">{{ cart.product.name }}</span>
+        <p>LongDescription: {{ cart.product.breed }}</p>
+        <p>ShortDescription: {{ cart.product.description }}</p>
+        <p>price: {{ cart.product.price }}</p>
+    </div>
+</div>
+
+{% endblock %}
