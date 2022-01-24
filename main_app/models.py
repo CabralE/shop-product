@@ -15,8 +15,7 @@ class Product(models.Model):
 
 class SubCart(models.Model):
     quantity = models.IntegerField()
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.OneToOneField(Product, on_delete=models.CASCADE)
 
 class Cart(models.Model):
-    subcart = models.ForeignKey(SubCart, on_delete=models.CASCADE)
-    pass
+    subCart = models.ForeignKey(SubCart, on_delete=models.CASCADE)
