@@ -13,9 +13,15 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'product_id': self.id})
+
 class SubCart(models.Model):
     quantity = models.IntegerField()
     product = models.OneToOneField(Product, on_delete=models.CASCADE)
+
+    def get_absolute_url(self):
+        return reverse('cart_index')
 
 class Cart(models.Model):
     subCart = models.ForeignKey(SubCart, on_delete=models.CASCADE)
