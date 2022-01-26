@@ -13,7 +13,7 @@
             <p>Price: $ {{ product.price }}0</p>
             <p>Image: {{ product.image }}</p>
         </div>
-    </a>
+        <a class="btn" id="add_to_cart" href="{% url 'add_to_cart' product.id %}">Add to Cart</a>
 </div>
 {% endfor %}
 

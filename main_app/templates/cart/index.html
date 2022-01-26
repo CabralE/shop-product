@@ -19,7 +19,7 @@
             {{ quantity_form.as_p }}
             <input type="submit" class="btn" value="Quantity">
         </form>
-        <a href="{% url 'cart_delete' cart.id %}">Delete</a>
+        <a class="btn" id="delete" href="{% url 'cart_delete' cart.id %}">Delete</a>
 </div>
 {% endfor %}
 
