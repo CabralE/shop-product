@@ -18,10 +18,17 @@ class Product(models.Model):
 
 class SubCart(models.Model):
     quantity = models.IntegerField()
-    product = models.OneToOneField(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    cart = models.ForeignKey('Cart', on_delete=models.CASCADE) 
 
     def get_absolute_url(self):
         return reverse('cart_index')
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=('product', 'cart'), name='once_per_product_cart')
+        ]
+        
 class Cart(models.Model):
-    subCart = models.ForeignKey(SubCart, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    products = models.ManyToManyField(Product, through=SubCart)
