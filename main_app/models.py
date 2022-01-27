@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 # Create your models here.
 
 class Product(models.Model):
@@ -20,6 +21,7 @@ class SubCart(models.Model):
     quantity = models.IntegerField()
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     cart = models.ForeignKey('Cart', on_delete=models.CASCADE) 
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def get_absolute_url(self):
         return reverse('cart_index')
@@ -32,3 +34,6 @@ class SubCart(models.Model):
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     products = models.ManyToManyField(Product, through=SubCart)
+
+    # def get_absolute_url(self):
+    #     return reverse('cart_index')

@@ -29,7 +29,9 @@ Deployment - https://shop-for-balls.herokuapp.com/
 
 Challenges
 - - - -
-- [ ] Hiding my Secret Key in .ENV
+- [ ] Hiding my Secret Key in .ENV.
+- [ ] Creating unique SubCarts for each user.
+- [ ] Adding a user as an object.
 
 
 
