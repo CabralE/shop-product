@@ -6,12 +6,11 @@
 <div class="card">
     <div class="card-content">
         <span class="card-title">{{ product.name }}</span>
-        <p>LongDescription: {{ product.breed }}</p>
-        <p>ShortDescription: {{ product.description }}</p>
+        <p>Description: {{ product.breed }}</p>
         <p>price: {{ product.price }}</p>
         <p>Image: {{ product.Image }}</p>
-
     </div>
+    <a class="btn" id="add_to_cart" href="{% url 'add_to_cart' product.id %}">Add to Cart</a>
 </div>
 
 {% endblock %}

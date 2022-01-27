@@ -3,9 +3,11 @@ from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from .models import Product, SubCart, Cart
 from .forms import QuantityForm
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponse
+
+# from django.http import HttpResponse
 # Create your views here.
 
 
@@ -27,8 +29,11 @@ def products_detail(request, product_id):
 
 @login_required
 def cart_index(request):
-    carts = SubCart.objects.all()
-    # carts = SubCart.objects.filter(user=request.user)
+    # carts = SubCart.objects.all()
+    # print(request)
+    # print(request.user)
+    # print(request.user.id)
+    carts = SubCart.objects.filter(user_id=request.user.id)
     quantity_form = QuantityForm()
     return render(request, 'cart/index.html', {'carts': carts , 'quantity_form': quantity_form})
 
@@ -41,7 +46,7 @@ def cart_detail(request, cart_id):
 def add_to_cart(request, product_id):
   product = Product.objects.get(id=product_id)
   cart = Cart.objects.get(user_id=request.user)
-  subcart = SubCart(product = product, cart=cart, quantity=1)
+  subcart = SubCart(product = product, cart=cart, quantity=1, user_id=request.user)
   subcart.save()
   return redirect('index')
 
@@ -64,11 +69,19 @@ class SubCartUpdate(LoginRequiredMixin, UpdateView):
   model = SubCart
   fields = ['quantity']
 
+
+
 class SubCartDelete(LoginRequiredMixin, DeleteView):
   model = SubCart
   success_url = '/cart/'
 
 class SubCartCreate(LoginRequiredMixin, CreateView):
   model = SubCart
-  fields = '__all__'
+  fields = ['quantity']
   success_url = '/cart/'
+
+  # def form_valid(self,form):
+  #   form.instance.user = self.request.user
+  #   return super().form_valid(form)
+
+
