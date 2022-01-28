@@ -15,5 +15,8 @@ urlpatterns = [
     path('cart/create/', views.SubCartCreate.as_view(), name='cart_create'),
     path('product/<int:product_id>/create/', views.add_to_cart, name="add_to_cart"),
     path('accounts/signup/', views.signup, name='signup'),
-    # path('user/create/', views.CartCreate.as_view(), name='user_create'),
+    path('cart/checkout/purchase', views.purchase, name='purchase'),
+    path('cart/checkout/', views.purchase_checkout, name='purchase_checkout'),
+
+    # path('restart/', views.restart, name='restart'),
 ]

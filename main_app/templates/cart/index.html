@@ -1,25 +1,32 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Cart</h1>
+<div class="row">
+    <h1 class="center-align">Cart</h1>
+</div>
+<div class="row">
+    <div class="col s2 offset-s9">
+        <a class="waves-effect waves-light btn-large orange" id="" href="{% url 'purchase_checkout' %}">Checkout</a>
+    </div>
+</div>
 
 {% for cart in carts %}
 <div class="card">
     <a href="{% url 'cart_detail' cart.id %}">
         <div class="card-content">
             <span class="card-title">{{ cart.product.name }}</span>
-            <p>Long-Description: {{ cart.product.longDescription }} {{ cart.product.shortDescription }}</p>
+            <p>Description: {{ cart.product.longDescription }} {{ cart.product.shortDescription }}</p>
             <p>Price: $ {{ cart.product.price }}</p>
             <p>Quantity: {{cart.quantity}}</p>
             <p>Total: $ {% widthratio cart.product.price 1 cart.quantity %} </p>
         </div>
     </a>
-        <form action="{% url 'add_quantity' cart.id %}" method="post">
+            <form action="{% url 'add_quantity' cart.id %}" method="post">
             {% csrf_token %}
             {{ quantity_form.as_p }}
             <input type="submit" class="btn" value="Quantity">
-        </form>
-        <a class="btn" id="delete" href="{% url 'cart_delete' cart.id %}">Delete</a>
+            </form>
+            <a class="btn" id="delete" href="{% url 'cart_delete' cart.id %}">Delete</a>
 </div>
 {% endfor %}
 

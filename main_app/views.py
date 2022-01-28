@@ -28,17 +28,32 @@ def products_detail(request, product_id):
   return render(request, 'products/detail.html', {'product': product})
 
 @login_required
+def purchase(request):
+  carts = SubCart.objects.filter(user_id=request.user.id)
+  carts.delete()
+  return redirect('index')
+  
+
+@login_required
+def purchase_checkout(request):
+  carts = SubCart.objects.filter(user_id=request.user.id)
+  quantity_form = QuantityForm()
+  total = 0
+  for cart in carts:
+    total += cart.product.price * cart.quantity
+
+  print(total)
+  return render(request, 'checkout/index.html', {'carts': carts, 'quantity_form': quantity_form, 'total': total})
+
+@login_required
 def cart_index(request):
-    # carts = SubCart.objects.all()
-    # print(request)
-    # print(request.user)
-    # print(request.user.id)
     carts = SubCart.objects.filter(user_id=request.user.id)
     quantity_form = QuantityForm()
     return render(request, 'cart/index.html', {'carts': carts , 'quantity_form': quantity_form})
 
 @login_required
 def cart_detail(request, cart_id):
+  print(cart_id)
   cart = SubCart.objects.get(id=cart_id)
   return render(request, 'cart/detail.html', {'cart': cart})
 
@@ -64,6 +79,9 @@ def signup(request):
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
+
+
+
 
 class SubCartUpdate(LoginRequiredMixin, UpdateView):
   model = SubCart
