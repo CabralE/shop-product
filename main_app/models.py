@@ -35,5 +35,3 @@ class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     products = models.ManyToManyField(Product, through=SubCart)
 
-    # def get_absolute_url(self):
-    #     return reverse('cart_index')

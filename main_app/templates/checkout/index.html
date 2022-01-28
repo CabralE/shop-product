@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row">
+    <h1 class="center-align">Checkout</h1>
+</div>
+<table class="striped" id="table">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cart in carts %}
+        <tr>
+            <td>{{ cart.product.name }}</td>
+            <td>${{ cart.product.price }}</td>
+            <td>{{cart.quantity}}</td>
+            <td>${% widthratio cart.product.price 1 cart.quantity %}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div class="row">
+    <div class="col s2 offset-s9">
+        Total ${{total}}
+    </div>
+</div>
+
+<div class="row" id="buttons">
+    <div class="col s2">
+        <a class="waves-effect waves-light btn-large green" id="" href="{% url 'cart_index' %}">Back</a>
+    </div>
+    <div class="col s2 offset-s8">
+        <a class="waves-effect waves-light btn-large green" id="" href="{% url 'purchase' %}">Purchase</a>
+    </div>
+</div>
+
+{% endblock %}
