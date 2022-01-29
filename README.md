@@ -4,6 +4,11 @@ Shop App
 A web application mimics a shop that sells atheletic balls. It includes full CRUD functionality, dynamic mathematical operations, and user authenthication and authorization. This project is my capstone for the course I took at General Assembly. For my capstone, I had to learn something thing new on my own. I choose to learn Python, Django, and Material CSS.
 
 
+Getting Started
+- - - -
+Deployment - https://ed-shop.herokuapp.com/
+
+
 Technologies Used
 - - - -
 * Frontend - HTML, CSS, Material CSS and Django(Opinionated Framework)
@@ -19,12 +24,6 @@ Wireframe for Cart Show Page
 ![Wireframe for Cart Show Page](./images/cart-show-page.png)
 Wireframe for Product Show Page
 ![Wireframe-product-show-page](./images/product-show-page.png)
-
-
-
-Getting Started
-- - - -
-Deployment - https://ed-shop.herokuapp.com/
 
 
 
