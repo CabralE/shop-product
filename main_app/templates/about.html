@@ -9,12 +9,39 @@
 <body>
     {% extends 'base.html' %}
     {% block content %}
+    <div class="row">
+        <h1 class="center-align">About</h1>
+    </div>
 
-    <h1>About the Shop</h1>
+    <div>
+        <p><b>‘Ed's Shop’</b> is a online atheletic shop, and it offers the a variety of sports balls for consumers to purchase.</p>
+    </div>
     <hr />
-    <p>Check out Shop!</p>
+    <!-- <p>Check out Shop!</p>
+    <p>To start, please signup or loging, then go to <b>'Products'</b> to add any item/s to your cart!</p> -->
+    <div class="grid">
+        <div class="img-wrapper">
+            <img class="zoom fade"src="https://d1yllc564ye8is.cloudfront.net/images/2022/1/27/Baseball.jpg" alt="baseball">
+            <div class="content fade">Baseball</div>
+        </div>
+        <div class="img-wrapper">
+            <img class="zoom fade" src="https://www.wkbn.com/wp-content/uploads/sites/48/2021/06/football-and-football-field-2.jpg" alt="football">
+            <div class="content fade">Football
+            </div>
+        </div>
+        <div class="img-wrapper">
+            <img class="zoom fade" src="https://d1qwqe1acr1rnz.cloudfront.net/images/2021/1/2/basketball_on_court.jpg" alt="basketball">
+            <div class="content fade">Basketball</div>
+        </div>
+        <div class="img-wrapper">
+            <img class="zoom fade" src="https://www.destinationmansfield.com/wp-content/uploads/2021/05/soccer-ball.jpg" alt="soccerball">
+            <div class="content fade">Soccer</div>
+        </div>
+
+    </div>
+
+
     {% endblock %}
-    <footer>Copyright &copy; 2022, Edward Cabral</footer>
 
 </body>
 </html>

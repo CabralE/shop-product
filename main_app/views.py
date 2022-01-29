@@ -61,9 +61,13 @@ def cart_detail(request, cart_id):
 def add_to_cart(request, product_id):
   product = Product.objects.get(id=product_id)
   cart = Cart.objects.get(user_id=request.user)
-  subcart = SubCart(product = product, cart=cart, quantity=1, user_id=request.user)
-  subcart.save()
-  return redirect('index')
+  exists = SubCart.objects.filter(product = product, cart=cart, quantity=1, user_id=request.user).exists()
+  if exists == True:
+    return redirect('index')
+  else:
+    subcart = SubCart(product = product, cart=cart, quantity=1, user_id=request.user)
+    subcart.save()
+    return redirect('index')
 
 def signup(request):
   error_message = ''
