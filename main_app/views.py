@@ -1,3 +1,4 @@
+from django.db.models import F
 from django.shortcuts import render, redirect
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from .models import Product, SubCart, Cart
@@ -59,6 +60,13 @@ def cart_detail(request, cart_id):
 
 @login_required
 def add_to_cart(request, product_id):
+  # product = Product.objects.get(id=product_id)
+  # cart, created = Cart.objects.get_or_create(user_id=request.user)
+  # subcart, created = SubCart.objects.get_or_create(product = product, cart=cart, quantity=1, user_id=request.user)
+  # if not created:
+  #   subcart.quantity = subcart.quantity + 1
+  #   subcart.save()
+  # return redirect('index')
   product = Product.objects.get(id=product_id)
   cart = Cart.objects.get(user_id=request.user)
   exists = SubCart.objects.filter(product = product, cart=cart, quantity=1, user_id=request.user).exists()
