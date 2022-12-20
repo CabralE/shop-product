@@ -28,7 +28,7 @@ DEBUG = True
 # from secret_settings import *
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
