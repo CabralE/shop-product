@@ -68,7 +68,7 @@ def add_to_cart(request, product_id):
   #   subcart.save()
   # return redirect('index')
   product = Product.objects.get(id=product_id)
-  cart = Cart.objects.get_or_create(user_id=request.user)
+  cart, created = Cart.objects.get_or_create(user_id=request.user.id)
   exists = SubCart.objects.filter(product = product, cart=cart, quantity=1, user_id=request.user).exists()
   if exists == True:
     return redirect('index')
